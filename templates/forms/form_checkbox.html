@@ -1,0 +1,29 @@
+<div>
+    <div class="mb-2 flex items-center">
+        {{ field }}
+        <label
+            for="{{ field.id_for_label }}"
+            class="pl-2"
+        >
+            {{ field.label }}
+        </label>
+        {% if field.help_text %}
+            <p class="pl-5 pb-[1px] text-sm text-gray-500 self-end">{{ field.help_text|safe }}</p>
+        {% endif %}
+    </div>
+    {% if field.errors %}
+        {% for error in field.errors %}
+            <div class="px-3 py-2 flex gap-2 bg-red-400 text-red-950 rounded">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="stroke-current flex-shrink-0 h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>{{ error }}</span>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>

@@ -8,11 +8,36 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sullivan TimeBank{% block title %}{% endblock title %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Mulish:wght@400;700&display=swap" rel="stylesheet">
     {% tailwind_preload_css %}
     {% tailwind_css %}
 </head>
 <body>
-    <h1 class="mb-8 text-3xl text-indigo-700 font-extrabold">Sullivan TimeBank</h1>
+    <div class="bg-white shadow">
+        <div class="container mx-auto h-16 px-4 flex justify-between items-center sm:px-6 lg:px-8">
+            <div class="flex-shrink-0 flex items-center">
+                <a href="{% url 'pages:home' %}">
+                    <img
+                        src="{% static 'images/sullivan-logo-color.png' %}"
+                        alt="Sullivan Logo"
+                        class="w-[250px]"
+                    />
+                </a>
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="navlink">About</a>
+                <a href="#" class="navlink">Jobs</a>
+                <a href="{% url 'account_login' %}">Login</a>
+            </div>
+        </div>
+    </div>
+    <h1 class="">Sullivan TimeBank</h1>
+    <h2 class="">Sullivan TimeBank</h2>
+    <h3 class="">Sullivan TimeBank</h3>
+    <h4 class="">Sullivan TimeBank</h4>
+
     {% block content %}{% endblock content %}
 </body>
 </html>

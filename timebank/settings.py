@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     # Local
     'theme',
+    'form_helpers.apps.FormHelpersConfig',
     'custom_user.apps.CustomUserConfig',
 ]
 
@@ -169,4 +170,9 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
+ACCOUNT_FORMS = {
+    'signup': 'custom_user.forms.CustomAllauthSignupForm',
+}
 SOCIALACCOUNT_PROVIDERS = {}
+LOGIN_REDIRECT_URL = 'pages:login_success'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'pages:home'

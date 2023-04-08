@@ -1,3 +1,59 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+        font-family: Mulish, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 400;
+        @apply text-gray-700;
+    }
+
+    h1, h2, h3, h4 {
+        font-family: Merriweather, Georgia, 'Times New Roman', Times, serif;
+        font-weight: 700;
+        @apply text-gray-700;
+    }
+
+    h1 {
+        @apply mb-8 text-5xl;
+    }
+
+    h2 {
+        @apply mb-6 text-2xl;
+    }
+
+    h3 {
+        @apply mb-4 text-xl;
+    }
+
+    h4 {
+        @apply mb-2 text-lg;
+    }
+
+    a {
+        @apply font-bold text-indigo-600;
+    }
+
+    .navlink {
+        @apply relative text-gray-600 hover:text-indigo-700;
+    }
+
+    .navlink::before {
+        @apply absolute content-[""] -top-1 left-0 w-0 h-[3px] bg-indigo-700 scale-x-0 origin-left transition ease-in-out duration-150;
+    }
+
+    .navlink:hover::before {
+        @apply w-full scale-x-100;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        @apply w-full px-4 py-2 rounded border-2 border-slate-400 focus:ring-0 focus:border-indigo-600 transition duration-150;
+    }
+
+    input[type="checkbox"] {
+        @apply w-5 h-5 rounded-sm text-indigo-600 border-slate-400 border-2 focus:ring-indigo-600;
+    }
+}
