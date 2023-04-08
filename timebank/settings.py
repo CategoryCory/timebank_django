@@ -173,6 +173,8 @@ ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 ACCOUNT_FORMS = {
     'login': 'custom_user.forms.CustomAllauthLoginForm',
     'signup': 'custom_user.forms.CustomAllauthSignupForm',
+    'set_password': 'custom_user.forms.CustomAllauthSetPasswordForm',
+    'change_password': 'custom_user.forms.CustomAllauthChangePasswordForm',
 }
 SOCIALACCOUNT_PROVIDERS = {}
 LOGIN_REDIRECT_URL = 'pages:login_success'

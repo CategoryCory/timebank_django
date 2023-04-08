@@ -23,7 +23,7 @@
             </div>
             {% include 'socialaccount/snippets/login_extra.html' %}
         {% endif %}
-        <form method="post" class="w-full flex flex-col gap-4">
+        <form method="post" action="{% url 'account_login' %}" class="w-full flex flex-col gap-4">
             {% csrf_token %}
             {% for hidden_field in form.hidden_fields %}{{ hidden_field }}{% endfor %}
 
