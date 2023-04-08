@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Mulish:wght@400;700&display=swap" rel="stylesheet">
     {% tailwind_preload_css %}
     {% tailwind_css %}
-    <title>Sullivan TimeBank</title>
+    <title>Sullivan TimeBank{% block title %}{% endblock title %}</title>
 </head>
 <body>
     <main class="min-h-screen px-4 flex flex-col justify-center items-center gap-3 md:gap-6 bg-zinc-100">
