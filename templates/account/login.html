@@ -1,6 +1,6 @@
 {% extends 'account_base.html' %}
 
-{% load static form_field_tags %}
+{% load static form_field_tags socialaccount %}
 
 {% block content %}
     <img src="{% static 'images/sullivan-logo-torch.png' %}" alt="Sullivan Logo" />
@@ -8,6 +8,19 @@
         <span class="text-indigo-600">Log in</span> to your account
     </h2>
     <div class="container max-w-xl px-3 lg:px-6 py-8 rounded-lg bg-white shadow-lg shadow-zinc-400/30">
+        {% get_providers as socialaccount_providers %}
+        {% if socialaccount_providers %}
+            <p>
+                Please sign in with one of your existing third-party accounts, or log in with your email address using
+                the form below.
+            </p>
+            <div>
+                <ul>
+                    {% include 'socialaccount/snippets/provider_list.html' with process='login' %}
+                </ul>
+            </div>
+            {% include 'socialaccount/snippets/login_extra.html' %}
+        {% endif %}
         <form method="post" class="w-full flex flex-col gap-4">
             {% csrf_token %}
             {% for hidden_field in form.hidden_fields %}{{ hidden_field }}{% endfor %}
@@ -22,6 +35,9 @@
 
             {% form_input form.login %}
             {% form_input form.password %}
+            {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
             <div class="flex justify-between items-center">
                 {% form_checkbox form.remember %}
                 <a href="{% url 'account_reset_password' %}">Forgot password?</a>
