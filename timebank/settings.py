@@ -171,6 +171,7 @@ ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 ACCOUNT_FORMS = {
+    'login': 'custom_user.forms.CustomAllauthLoginForm',
     'signup': 'custom_user.forms.CustomAllauthSignupForm',
 }
 SOCIALACCOUNT_PROVIDERS = {}
