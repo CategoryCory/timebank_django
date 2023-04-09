@@ -1,7 +1,14 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
-from allauth.account.forms import LoginForm, SignupForm, SetPasswordForm, ChangePasswordForm
+from allauth.account.forms import (
+    LoginForm,
+    SignupForm,
+    SetPasswordForm,
+    ResetPasswordForm,
+    ChangePasswordForm,
+    ResetPasswordKeyForm
+)
 
 from .models import CustomUser
 
@@ -51,6 +58,13 @@ class CustomAllauthSetPasswordForm(SetPasswordForm, forms.Form):
                                                    ))
 
 
+class CustomAllauthResetPasswordForm(ResetPasswordForm, forms.Form):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['email'] = forms.CharField(label='Email',
+                                               widget=forms.EmailInput(attrs={'placeholder': 'Email address'}))
+
+
 class CustomAllauthChangePasswordForm(ChangePasswordForm, forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -58,6 +72,19 @@ class CustomAllauthChangePasswordForm(ChangePasswordForm, forms.Form):
                                                      widget=forms.PasswordInput(
                                                          attrs={'placeholder': 'Your old password'}
                                                      ))
+        self.fields['password1'] = forms.CharField(label='New Password',
+                                                   widget=forms.PasswordInput(
+                                                       attrs={'placeholder': 'Your new password'}
+                                                   ))
+        self.fields['password2'] = forms.CharField(label='Confirm New Password',
+                                                   widget=forms.PasswordInput(
+                                                       attrs={'placeholder': 'Confirm your new password'}
+                                                   ))
+
+
+class CustomAllauthResetPasswordKeyForm(ResetPasswordKeyForm, forms.Form):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.fields['password1'] = forms.CharField(label='New Password',
                                                    widget=forms.PasswordInput(
                                                        attrs={'placeholder': 'Your new password'}

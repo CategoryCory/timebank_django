@@ -5,7 +5,7 @@
 {% block title %} | Confirm Logout{% endblock title %}
 
 {% block content %}
-    <div class="container max-w-xl px-3 lg:px-6 py-8 rounded-lg bg-white shadow-lg shadow-zinc-400/30">
+    <div class="container max-w-xl px-3 lg:px-6 py-8 flex flex-col gap-4 rounded-lg bg-white shadow-lg shadow-zinc-400/30">
         <div class="mb-6 flex flex-col items-center gap-4 border-b border-slate-200">
             <img src="{% static 'images/sullivan-logo-torch.png' %}" alt="Sullivan Logo" />
             <h2 class="font-sans text-slate-700 text-2xl lg:text-4xl">
@@ -14,18 +14,16 @@
         </div>
         <p class="font-bold">Are you sure you want to sign out?</p>
 
-        <form method="post" action="{% url 'account_logout' %}">
+        <form method="post" action="{% url 'account_logout' %}" class="w-full flex flex-col gap-4">
             {% csrf_token %}
             {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
             {% endif %}
-            <div class="mt-4 flex items-center gap-4">
-                <button type="submit" class="btn btn-primary">Sign Out</button>
-                <a href="{% url 'pages:home' %}" class="font-normal text-gray-600 text-sm">
-                    Cancel and return to home
-                </a>
-            </div>
+            <button type="submit" class="btn btn-primary">Sign Out</button>
         </form>
+        <a href="{% url 'pages:home' %}" class="font-normal text-gray-600 text-sm">
+            Cancel and return to home
+        </a>
     </div>
 
 {% endblock content %}

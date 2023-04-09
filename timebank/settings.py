@@ -148,6 +148,13 @@ STATICFILES_DIRS = [
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# Email settings
+# TODO: expand this for production use
+if DEBUG is True:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -174,7 +181,9 @@ ACCOUNT_FORMS = {
     'login': 'custom_user.forms.CustomAllauthLoginForm',
     'signup': 'custom_user.forms.CustomAllauthSignupForm',
     'set_password': 'custom_user.forms.CustomAllauthSetPasswordForm',
+    'reset_password': 'custom_user.forms.CustomAllauthResetPasswordForm',
     'change_password': 'custom_user.forms.CustomAllauthChangePasswordForm',
+    'reset_password_from_key': 'custom_user.forms.CustomAllauthResetPasswordKeyForm',
 }
 SOCIALACCOUNT_PROVIDERS = {}
 LOGIN_REDIRECT_URL = 'pages:login_success'
