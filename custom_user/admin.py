@@ -9,12 +9,12 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = CustomUser
-    list_display = ('email', 'username', 'first_name', 'last_name', 'is_active', )
-    list_editable = ('is_active', )
-    list_filter = ('is_active', )
+    list_display = ('email', 'username', 'first_name', 'last_name', 'is_active', 'is_approved', )
+    list_editable = ('is_active', 'is_approved', )
+    list_filter = ('is_active', 'is_approved', )
     list_per_page = 25
     fieldsets = (
-        ('Account Information', {'fields': ('username', 'email', 'first_name', 'last_name', )}),
+        ('Account Information', {'fields': ('username', 'email', 'first_name', 'last_name', 'is_approved', )}),
         ('Contact Information', {'fields': ('street_address', 'street_address_2', 'city', 'state', 'zip_code',
                                             'phone', )}),
         ('Personal and Social Information', {'fields': ('birthday', 'biography', 'facebook', 'twitter', 'instagram',

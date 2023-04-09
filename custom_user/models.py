@@ -16,6 +16,8 @@ class CustomUser(AbstractUser):
     twitter = models.CharField(max_length=250, blank=True)
     instagram = models.CharField(max_length=250, blank=True)
     linkedin = models.CharField(max_length=250, blank=True)
+    is_approved = models.BooleanField(default=False,
+                                      help_text='Indicates whether this user has been approved to use this site')
 
     def __str__(self):
         if self.first_name and self.last_name:
