@@ -12,6 +12,8 @@ from allauth.account.forms import (
 
 from .models import CustomUser
 
+# TODO: Add custom field validation error messages
+
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
@@ -35,6 +37,16 @@ class CustomAllauthLoginForm(LoginForm, forms.Form):
 class CustomAllauthSignupForm(SignupForm, forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields['first_name'] = forms.CharField(max_length=30,
+                                                    label='First Name',
+                                                    required=True,
+                                                    widget=forms.TextInput(attrs={'placeholder': 'First Name'}),
+                                                    error_messages={'required': 'You must provide your first name'})
+        self.fields['last_name'] = forms.CharField(max_length=30,
+                                                   label='Last Name',
+                                                   required=True,
+                                                   widget=forms.TextInput(attrs={'placeholder': 'Last Name'}),
+                                                   error_messages={'required': 'You must provide your last name'})
         self.fields['email'] = forms.CharField(label='Email',
                                                widget=forms.EmailInput(attrs={'placeholder': 'Email Address'}))
         self.fields['password1'] = forms.CharField(label='Password',
@@ -43,6 +55,11 @@ class CustomAllauthSignupForm(SignupForm, forms.Form):
                                                    widget=forms.PasswordInput(
                                                        attrs={'placeholder': 'Enter your password again'}
                                                    ))
+
+        def save(self, request):
+            user = super(CustomAllauthSignupForm, self).save(request)
+            user.save()
+            return user
 
 
 class CustomAllauthSetPasswordForm(SetPasswordForm, forms.Form):

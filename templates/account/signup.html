@@ -10,7 +10,7 @@
         <span class="text-indigo-600">Sign up</span> for an account
     </h2>
     <div class="container max-w-xl px-3 lg:px-6 py-8 rounded-lg bg-white shadow-lg shadow-zinc-400/30">
-        <form method="post" action="{% url 'account_signup' %}" class="w-full flex flex-col gap-4">
+        <form method="post" action="{% url 'account_signup' %}" class="w-full flex flex-col gap-4" novalidate>
             {% csrf_token %}
             {% for hidden_field in form.hidden_fields %}{{ hidden_field }}{% endfor %}
 
@@ -22,6 +22,8 @@
                 </div>
             {% endif %}
 
+            {% form_input form.first_name %}
+            {% form_input form.last_name %}
             {% form_input form.email %}
             {% form_input form.password1 %}
             {% form_input form.password2 %}
