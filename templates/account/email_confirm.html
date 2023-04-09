@@ -1,0 +1,42 @@
+{% extends "account_base.html" %}
+
+{% load account i18n static %}
+
+{% block title %} | Confirm E-mail Address{% endblock title %}
+
+{% block content %}
+    <img src="{% static 'images/sullivan-logo-torch.png' %}" alt="Sullivan Logo" />
+    <h2 class="font-sans text-slate-700 text-2xl lg:text-4xl">
+        <span class="text-indigo-600">Confirm</span> your email address
+    </h2>
+
+    <div class="container max-w-xl px-3 lg:px-6 py-8 rounded-lg bg-white shadow-lg shadow-zinc-400/30">
+        {% if confirmation %}
+            {% user_display confirmation.email_address.user as user_display %}
+            <p class="mb-4">
+                {% blocktrans with confirmation.email_address.email as email %}
+                    Please confirm that <strong>{{ email }}</strong> is a valid email address for user
+                    <strong>{{ user_display }}</strong>.
+                {% endblocktrans %}
+            </p>
+
+            <form
+                method="post"
+                action="{% url 'account_confirm_email' confirmation.key %}"
+                class="w-full flex flex-col gap-4"
+            >
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Confirm</button>
+            </form>
+
+        {% else %}
+            {% url 'account_email' as email_url %}
+            <p>
+                {% blocktrans %}
+                    This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new
+                    e-mail confirmation request</a>.
+                {% endblocktrans %}
+            </p>
+        {% endif %}
+    </div>
+{% endblock %}

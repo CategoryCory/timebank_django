@@ -185,6 +185,7 @@ ACCOUNT_FORMS = {
     'change_password': 'custom_user.forms.CustomAllauthChangePasswordForm',
     'reset_password_from_key': 'custom_user.forms.CustomAllauthResetPasswordKeyForm',
 }
+ACCOUNT_USER_DISPLAY = 'timebank.helpers.helpers.get_user_full_name'
 SOCIALACCOUNT_PROVIDERS = {}
 LOGIN_REDIRECT_URL = 'pages:login_success'
 ACCOUNT_LOGOUT_REDIRECT_URL = 'pages:home'
