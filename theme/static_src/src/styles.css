@@ -36,16 +36,22 @@
     }
 
     .navlink {
-        @apply relative text-gray-600 hover:text-indigo-700;
+        @apply px-1 pt-1 h-full inline-flex items-center font-bold text-gray-500 border-b-2 border-transparent
+            hover:border-gray-300 hover:text-gray-700;
     }
 
-    .navlink::before {
-        @apply absolute content-[""] -top-1 left-0 w-0 h-[3px] bg-indigo-700 scale-x-0 origin-left transition ease-in-out duration-150;
+    .active-navlink {
+        @apply px-1 pt-1 h-full inline-flex items-center font-bold text-indigo-700 border-b-2 border-indigo-500;
     }
 
-    .navlink:hover::before {
-        @apply w-full scale-x-100;
-    }
+
+    /*.navlink::before {*/
+    /*    @apply absolute content-[""] -top-1 left-0 w-0 h-[3px] bg-indigo-700 scale-x-0 origin-left transition ease-in-out duration-150;*/
+    /*}*/
+
+    /*.navlink:hover::before {*/
+    /*    @apply w-full scale-x-100;*/
+    /*}*/
 
     input[type="text"],
     input[type="email"],

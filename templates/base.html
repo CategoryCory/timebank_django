@@ -16,20 +16,48 @@
 </head>
 <body>
     <div class="bg-white shadow">
-        <div class="container mx-auto h-16 px-4 flex justify-between items-center sm:px-6 lg:px-8">
-            <div class="flex-shrink-0 flex items-center">
-                <a href="{% url 'pages:home' %}">
-                    <img
-                        src="{% static 'images/sullivan-logo-color.png' %}"
-                        alt="Sullivan Logo"
-                        class="w-[250px]"
-                    />
-                </a>
-            </div>
-            <div class="flex gap-6">
-                <a href="#" class="navlink">About</a>
-                <a href="#" class="navlink">Jobs</a>
-                <a href="{% url 'account_login' %}">Login</a>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="{% url 'pages:home' %}">
+                        <img
+                            src="{% static 'images/sullivan-logo-color.png' %}"
+                            alt="Sullivan Logo"
+                            class="w-[250px]"
+                        />
+                    </a>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:gap-8 sm:items-center">
+                    {% url 'pages:home' as url_home %}
+                    <a href="#" class="navlink">About</a>
+                    <a href="#" class="navlink">Jobs</a>
+                    {% if user.is_authenticated %}
+                        <div class="dropdown dropdown-end">
+                            <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                                <div class="w-10 rounded-full">
+                                    <img src="{% static 'images/blank-user.png' %}" />
+                                </div>
+                            </label>
+                            <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+{#                                <li>#}
+{#                                    <a class="justify-between">#}
+{#                                        Profile#}
+{#                                        <span class="badge">New</span>#}
+{#                                    </a>#}
+{#                                </li>#}
+{#                                <li><a>Settings</a></li>#}
+                                <li>
+                                    <a href="{% url 'account_logout' %}">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    {% else %}
+                        <a href="{% url 'account_login' %}" class="navlink">Login</a>
+                        <a href="{% url 'account_signup' %}" class="btn btn-outline btn-primary">
+                            Sign Up
+                        </a>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
