@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Mulish:wght@400;700&display=swap" rel="stylesheet">
     {% tailwind_preload_css %}
     {% tailwind_css %}
+    <link rel="stylesheet" href="{% static 'css/custom_styles.css' %}">
 </head>
 <body>
     <div class="bg-white shadow">
@@ -61,11 +62,17 @@
             </div>
         </div>
     </div>
-    <h1 class="">Sullivan TimeBank</h1>
-    <h2 class="">Sullivan TimeBank</h2>
-    <h3 class="">Sullivan TimeBank</h3>
-    <h4 class="">Sullivan TimeBank</h4>
-
     {% block content %}{% endblock content %}
+    <div class="w-full py-8 bg-gray-700">
+        <div class="container mx-auto flex justify-between items-center">
+            <img src="{% static 'images/sullivan-logo.png' %}" alt="Sullivan Logo" width="300" />
+            <div class="flex gap-8">
+                <p class="text-white">&copy;2023 Sullivan Foundation</p>
+                {# TODO: replace with links to terms and privacy policy pages #}
+                <a href="#" class="text-white hover:text-orange-300 duration-150">Terms of Service</a>
+                <a href="#" class="text-white hover:text-orange-300 duration-150">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
