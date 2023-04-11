@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.views.generic import TemplateView
 
 
 @login_required
@@ -11,5 +12,9 @@ def login_success(request):
         return redirect('pages:home')
 
 
-def homepage_view(request):
-    return render(request, 'pages/home.html', {})
+class HomepageView(TemplateView):
+    template_name = 'pages/home.html'
+
+
+class AboutView(TemplateView):
+    template_name = 'pages/about.html'

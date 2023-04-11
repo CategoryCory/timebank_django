@@ -1,0 +1,269 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} | About{% endblock title %}
+
+{% block content %}
+    <div class="aboutHero">
+        <div class="container mx-auto">
+            <h1 class="text-5xl">About the TimeBank</h1>
+        </div>
+    </div>
+    <div class="container mx-auto mt-16">
+        <div class="tabs-container">
+            <a id="about-tab" class="tab-link" data-tab-section="about-section">About the Timebank</a>
+            <a id="faq-tab" class="tab-link" data-tab-section="faq-section">FAQ</a>
+        </div>
+    </div>
+    <section id="about-section" class="tab-content mt-8 hidden">
+        <div class="container mx-auto px-8">
+            <div class="mx-auto prose max-w-[68rem] lg:prose-lg">
+                <p>
+                    Despite many local communities &#40;your school, church, sports club, town&#41;, many of us do not know
+                    where to turn to help those in need or whom to ask when we need help. We can certainly donate our time
+                    through local agencies who are possibly serving a different community than ours. However, these &quot;service
+                    events&quot; do little to build community and friendships, and they often create a sense of the haves and
+                    the have-nots.
+                </p>
+                <p>
+                    TimeBanking was created to provide access to services you need while providing a tool for you to connect
+                    and give back to others. TimeBanking is a mode of exchange that allows people to swap their skills and time,
+                    rather than money, while building stronger connections within your community. Everyone has something to give,
+                    and everyone has needs. The TimeBank encourages the virtues of both giving and receiving by earning and
+                    using credits.
+                </p>
+            </div>
+        </div>
+        <div class="w-full my-14 py-6 grid grid-cols-1 bg-slate-200/40 lg:py-0 lg:grid-cols-2 items-center">
+            <div class="max-w-xl mx-auto px-6 lg:ml-auto lg:mr-0">
+                <h4 class="text-lg leading-loose text-center lg:text-xl lg:leading-loose lg:text-right xl:text-2xl xl:leading-loose">
+                    Members of the TimeBank earn and spend &quot;time credits&quot;&mdash;for every hour they
+                    spend on an activity that helps others, they receive one time credit. When they need help
+                    from other TimeBank members with particular skills, they can &quot;spend&quot; their time
+                    credits.
+                </h4>
+            </div>
+            <div class="hidden lg:block">
+                <img src="{% static 'images/questions.jpg' %}" alt="People Asking Questions" class="w-full object-cover" />
+            </div>
+        </div>
+        <p class="max-w-[52rem] mx-auto my-8 px-6 lg:px-0 lg:text-lg xl:text-xl">
+            Each TimeBank is a members-only community, where people in your community commit to the ideas and
+            values of the TimeBank, including:
+        </p>
+        <div class="w-full grid grid-cols-1 lg:grid-cols-2 items-center">
+            <div class="hidden lg:block">
+                <img src="{% static 'images/delivery.jpg' %}" alt="Person Delivering Food" class="w-full object-cover" />
+            </div>
+            <div class="max-w-xl pl-6">
+                <ul class="px-6 list-disc space-y-4 marker:text-lime-500 marker:text-3xl lg:text-lg">
+                    <li>
+                        <span class="text-2xl font-bold">Assets:</span><br />
+                        Everyone has something to offer
+                    </li>
+                    <li>
+                        <span class="text-2xl font-bold">Redefining work:</span><br />
+                        Building home, family and community is valued work
+                    </li>
+                    <li>
+                        <span class="text-2xl font-bold">Reciprocity:</span><br />
+                        Encouraging givers to receive&mdash;and receivers to give&mdash; builds trust,
+                        resiliency and sharing
+                    </li>
+                    <li><span class="text-2xl font-bold">Community:</span><br />
+                        We are stronger together
+                    </li>
+                    <li><span class="text-2xl font-bold">Respect:</span><br />
+                        Respect is the root of equality
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <p class="max-w-[52rem] mx-auto my-12 px-6 lg:px-0 lg:text-lg xl:text-xl">
+            Members who wish to simply help the community through their service are able to donate their
+            earned hours to a designated community pot so that members of that specific community who may
+            not be able to provide services themselves can still receive benefit.
+        </p>
+        <h2 class="text-5xl text-center">Join our community<br />and start helping</h2>
+        <div class="startNowCTA">
+            <a
+                href="{% url 'account_signup' %}"
+                class="btn btn-large bg-indigo-600 text-white hover:bg-indigo-700"
+            >
+                Start Now
+            </a>
+        </div>
+    </section>
+    <section id="faq-section" class="tab-content container mx-auto mt-8 mb-16 hidden">
+        <div class="faq-panel">
+            <h3 class="faq-label">What is TimeBanking?</h3>
+            <div class="faq-content">
+                <p>
+                    TimeBanking is a community program that allows the voluntary exchange of services between members.
+                </p>
+                <p>
+                    It&rsquo;s as simple as give an hour, receive an hour: by giving one hour of help to another member,
+                    you earn one hour of time credit, which can be used to receive services that are of personal value,
+                    such as dog walking, ironing, community gardening, massages, language tuition, painting, administrative
+                    assistance&hellip;you&rsquo;re only restricted by your imagination.
+                </p>
+                <p>
+                    Everyone can be part of TimeBanking because everyone has something to give.
+                </p>
+            </div>
+        </div>
+        <div class="faq-panel">
+            <h3 class="faq-label">What can TimeBanking do for me?</h3>
+            <div class="faq-content">
+                <p>
+                    If you like to volunteer and give time to your community, TimeBanking is for you!
+                </p>
+                <p>
+                    TimeBanking can help you build a network of support within your neighborhood or community
+                    because TimeBanking creates connections through sharing skills. You also earn time credits for
+                    giving your time and sharing your skills to help another member. You can then use these credits
+                    to receive services that are useful and valuable to you.
+                </p>
+                <p>
+                    Everyone has different skills and knowledge to share, which is why TimeBanking is so successful.
+                </p>
+            </div>
+        </div>
+        <div class="faq-panel">
+            <h3 class="faq-label">How is TimeBanking different from traditional volunteering?</h3>
+            <div class="faq-content">
+                <p>
+                    TimeBanking is based on the tradition of reciprocity. You earn time credits for giving services
+                    to another person, which you can then use to receive services that are useful and valuable to you.
+                    In addition, unlike traditional volunteering, you are more likely to develop lasting connections
+                    with other members of your community.
+                </p>
+            </div>
+        </div>
+        <div class="faq-panel">
+            <h3 class="faq-label">How does it work?</h3>
+            <div class="faq-content">
+                <p>
+                    Once you become a TimeBanking member, you are able to search through all the offers of assistance
+                    and requests for assistance by other members.
+                </p>
+                <p>
+                    If you see someone's offer or request that you could complete, or that you would find useful, you
+                    simply contact that person to arrange completion of the service.
+                </p>
+                <p>
+                    Following completion of the task, the person who received the service logs into their account and
+                    registers the number of hours it took, to the nearest half hour. The system then completes the
+                    exchange of time between the members involved.
+                </p>
+                <p>
+                    Everyone has something to give, so have a think about what you could offer and what you might want.
+                    It may be housework, it could be guitar lessons, or even reading to someone&mdash;there are no
+                    limits!
+                </p>
+            </div>
+        </div>
+        <div class="faq-panel">
+            <h3 class="faq-label">What types of services can I request?</h3>
+            <div class="faq-content">
+                <p>
+                    Anything that you need help with, from computer repairs, cleaning, driving, hospital visits,
+                    cooking lessons, umpiring, flat pack construction, pool cleaning, administrative
+                    assistance&mdash;the possibilities are endless!
+                </p>
+            </div>
+        </div>
+        <div class="faq-panel">
+            <h3 class="faq-label">What if I don't need any services?</h3>
+            <div class="faq-content">
+                <p>
+                    You can still participate! If you don't use the hours that you earn, you can donate them
+                    to another TimeBanking member by contacting your local TimeBanking coordinator.
+                </p>
+            </div>
+        </div>
+        <div class="faq-panel">
+            <h3 class="faq-label">What is expected of me as a member?</h3>
+            <div class="faq-content">
+                <p>
+                    We ask that members make their first exchange within two weeks of joining and engage in
+                    at least six activities during the course of a year. We also ask that you return any messages
+                    with requests or offers for service within several days of receiving them.
+                </p>
+                <p>
+                    You are not obliged to provide a service to anyone; however, you are asked to look for suitable
+                    opportunities to give back.
+                </p>
+            </div>
+        </div>
+        <div class="faq-panel">
+            <h3 class="faq-label">How can I become a member?</h3>
+            <div class="faq-content">
+                <p>
+                    All you have to do is register! We will review your profile and send you an email when your
+                    account has been approved.
+                </p>
+            </div>
+        </div>
+        <div class="faq-panel">
+            <h3 class="faq-label">How much does it cost to become a member?</h3>
+            <div class="faq-content">
+                <p>
+                    TimeBanking is free to join, so sign up today!
+                </p>
+            </div>
+        </div>
+        <div class="faq-panel">
+            <h3 class="faq-label">Further questions?</h3>
+            <div class="faq-content">
+                <p>
+                    {# TODO: replace with correct admin email #}
+                    We'd be pleased to answer any other questions you may have. Contact us at (admin's email).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function openTab(tabName, tabSectionName) {
+            let i, tabContent, tabLinks;
+
+            // Hide all tab content sections
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.add("hidden");
+            }
+
+            // Remove active class from all tabs
+            tabLinks = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].classList.remove("tab-active");
+                tabLinks[i].classList.add("tab-inactive");
+            }
+
+            // Show current tab and set tab as active
+            document.getElementById(tabSectionName).classList.remove("hidden");
+            document.getElementById(tabName).classList.remove("tab-inactive");
+            document.getElementById(tabName).classList.add("tab-active");
+        }
+
+        const tabs = document.getElementsByClassName("tab-link");
+
+        for (let i = 0; i < tabs.length; i++) {
+            tabs[i].addEventListener("click", () => {
+                openTab(tabs[i].id, tabs[i].dataset.tabSection);
+            });
+        }
+
+        const accordion = document.getElementsByClassName("faq-panel");
+
+        for (let i = 0; i < accordion.length; i++) {
+            accordion[i].addEventListener("click", function() {
+                this.classList.toggle("faq-active");
+            });
+        }
+
+        openTab("about-tab", "about-section");
+    </script>
+{% endblock content %}

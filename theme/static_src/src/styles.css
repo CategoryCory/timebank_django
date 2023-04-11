@@ -6,7 +6,7 @@
     body {
         font-family: Mulish, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-weight: 400;
-        @apply text-gray-700;
+        @apply flex flex-col min-h-screen text-gray-700;
     }
 
     h1, h2, h3, h4 {
@@ -44,15 +44,6 @@
         @apply px-1 pt-1 h-full inline-flex items-center font-bold text-indigo-700 border-b-2 border-indigo-500;
     }
 
-
-    /*.navlink::before {*/
-    /*    @apply absolute content-[""] -top-1 left-0 w-0 h-[3px] bg-indigo-700 scale-x-0 origin-left transition ease-in-out duration-150;*/
-    /*}*/
-
-    /*.navlink:hover::before {*/
-    /*    @apply w-full scale-x-100;*/
-    /*}*/
-
     input[type="text"],
     input[type="email"],
     input[type="password"] {
@@ -61,5 +52,37 @@
 
     input[type="checkbox"] {
         @apply w-5 h-5 rounded-sm text-indigo-600 border-slate-400 border-2 focus:ring-indigo-600;
+    }
+
+    .tabs-container {
+        @apply container max-w-[58rem] mx-auto mb-10 flex border-b-2 border-blue-800/20;
+    }
+
+    .tab-link {
+        @apply w-full m-2 py-3 font-bold text-center lg:text-lg tracking-wide cursor-pointer rounded-lg duration-150;
+    }
+
+    .tab-active {
+        @apply bg-indigo-500/20 text-indigo-800;
+    }
+
+    .tab-inactive {
+        @apply text-gray-600 hover:bg-indigo-500/10;
+    }
+
+    .faq-panel {
+        @apply mb-6 max-w-full mb-4 px-6 prose lg:prose-lg;
+    }
+
+    .faq-label {
+        @apply relative px-5 py-3 bg-slate-300/20 text-slate-700 rounded-md cursor-pointer;
+    }
+
+    .faq-content {
+        @apply max-w-[72rem] px-4 hidden;
+    }
+
+    .faq-panel.faq-active .faq-content {
+        @apply block;
     }
 }

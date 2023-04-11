@@ -3,62 +3,60 @@
 {% load static %}
 
 {% block content %}
-    <main>
-        <div class="homepageHero">
-            <div class="container mx-auto py-8 grid grid-cols-2">
-                <div>
-                    <p class="mb-8 text-3xl font-bold">Welcome to the</p>
-                    <h1 class="mb-10 text-6xl font-bold leading-normal">Oxford Community Timebank</h1>
-                    <p class="mb-6 text-xl">Building Community Through an Alternative Economy</p>
-                    <a href="{% url 'account_signup' %}" class="btn btn-large bg-indigo-600 text-white hover:bg-indigo-700">
-                        Register in your community
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="w-full grid grid-cols-2">
+    <div class="homepageHero">
+        <div class="container mx-auto py-8 grid grid-cols-2">
             <div>
-                <img src="{% static 'images/helping.jpg' %}" alt="Helping Hands" class="w-full object-cover" />
-            </div>
-            <div class="px-8 flex flex-col justify-center gap-8">
-                <h2 class="text-6xl"><span class="text-3xl">About</span><br />Sullivan TimeBank</h2>
-                <p class="text-xl text-indigo-600 lg:text-2xl">Helping others is like money in the bank.</p>
-                <div class="prose lg:prose-lg">
-                    <p>
-                        TimeBanking is a community program that allows for the exchange of services between members. It is as simple as giving
-                        an hour of your time and receiving an hour of help in return. For every hour you spend helping others, you receive
-                        one time credit. You can then use your time credit to obtain an hour of assistance for one of your projects.
-                    </p>
-                    <p>
-                        If you don&rsquo;t need help right now, you have the option to donate your credit.
-                    </p>
-                </div>
+                <p class="mb-8 text-3xl font-bold">Welcome to the</p>
+                <h1 class="mb-10 text-6xl font-bold leading-normal">Oxford Community Timebank</h1>
+                <p class="mb-6 text-xl">Building Community Through an Alternative Economy</p>
+                <a href="{% url 'account_signup' %}" class="btn btn-large bg-indigo-600 text-white hover:bg-indigo-700">
+                    Register in your community
+                </a>
             </div>
         </div>
-        <div class="container mx-auto pt-16 text-center">
-            <h2 class="text-3xl">How the TimeBank</h2>
-            <h2 class="text-5xl">Benefits Your Community</h2>
-            <div class="py-6 prose lg:prose-lg lg:max-w-none">
+    </div>
+    <div class="w-full grid grid-cols-2">
+        <div>
+            <img src="{% static 'images/helping.jpg' %}" alt="Helping Hands" class="w-full object-cover" />
+        </div>
+        <div class="px-8 flex flex-col justify-center gap-8">
+            <h2 class="text-6xl"><span class="text-3xl">About</span><br />Sullivan TimeBank</h2>
+            <p class="text-xl text-indigo-600 lg:text-2xl">Helping others is like money in the bank.</p>
+            <div class="prose lg:prose-lg">
                 <p>
-                    Due to the combination of living in a technologically-driven society and the isolation ensuing from COVID-19 limitations,
-                    we are increasingly disconnected from the gift of community. During a time of social distancing and gathering limitations,
-                    many of us rediscovered the importance of daily interactions. Transitioning out of the pandemic and back into our
-                    neighborhoods, the TimeBank provides a way to foster intentional connection and strengthen bonds with community members.
+                    TimeBanking is a community program that allows for the exchange of services between members. It is as simple as giving
+                    an hour of your time and receiving an hour of help in return. For every hour you spend helping others, you receive
+                    one time credit. You can then use your time credit to obtain an hour of assistance for one of your projects.
                 </p>
                 <p>
-                    In addition to fostering relationships, the TimeBank meets practical needs in the community, as lawns are mowed and walls
-                    are painted. The TimeBank provides the opportunity for community members to sharpen their crafts or rediscover hobbies.
-                    Our credit system also allows those recovering from financial hardship a new way to move forward.
+                    If you don&rsquo;t need help right now, you have the option to donate your credit.
                 </p>
             </div>
         </div>
-        <div class="startNowCTA">
-            <a
-                href="{% url 'account_signup' %}"
-                class="btn btn-large bg-indigo-600 text-white hover:bg-indigo-700"
-            >
-                Start Now
-            </a>
+    </div>
+    <div class="container mx-auto pt-16 text-center">
+        <h2 class="text-3xl">How the TimeBank</h2>
+        <h2 class="text-5xl">Benefits Your Community</h2>
+        <div class="py-6 prose lg:prose-lg lg:max-w-none">
+            <p>
+                Due to the combination of living in a technologically-driven society and the isolation ensuing from COVID-19 limitations,
+                we are increasingly disconnected from the gift of community. During a time of social distancing and gathering limitations,
+                many of us rediscovered the importance of daily interactions. Transitioning out of the pandemic and back into our
+                neighborhoods, the TimeBank provides a way to foster intentional connection and strengthen bonds with community members.
+            </p>
+            <p>
+                In addition to fostering relationships, the TimeBank meets practical needs in the community, as lawns are mowed and walls
+                are painted. The TimeBank provides the opportunity for community members to sharpen their crafts or rediscover hobbies.
+                Our credit system also allows those recovering from financial hardship a new way to move forward.
+            </p>
         </div>
-    </main>
+    </div>
+    <div class="startNowCTA">
+        <a
+            href="{% url 'account_signup' %}"
+            class="btn btn-large bg-indigo-600 text-white hover:bg-indigo-700"
+        >
+            Start Now
+        </a>
+    </div>
 {% endblock content %}

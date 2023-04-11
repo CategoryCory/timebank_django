@@ -1,9 +1,10 @@
 from django.urls import path
 
-from .views import homepage_view, login_success
+from .views import HomepageView, AboutView, login_success
 
 app_name = 'pages'
 urlpatterns = [
-    path('', homepage_view, name='home'),
+    path('', HomepageView.as_view(), name='home'),
+    path('about/', AboutView.as_view(), name='about'),
     path('login-success/', login_success, name='login_success'),
 ]
