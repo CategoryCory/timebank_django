@@ -1,0 +1,27 @@
+{% extends "account_base.html" %}
+
+{% load static %}
+
+{% block title %} | Verify Email Address{% endblock title %}
+
+{% block content %}
+    <img src="{% static 'images/sullivan-logo-torch.png' %}" alt="Sullivan Logo" />
+    <h2 class="font-sans text-slate-700 text-2xl lg:text-4xl">
+        <span class="text-indigo-600">Verify</span> your email address
+    </h2>
+
+    <div class="container max-w-xl px-3 lg:px-6 py-8 flex flex-col gap-4 rounded-lg bg-white shadow-lg shadow-zinc-400/30">
+        <p>
+            We have sent an email to you for verification. Follow the link provided to finalize the signup process.
+            If you do not see the verification email in your main inbox, check your spam folder.
+        </p>
+        <p>
+            {# TODO: Replace with link to contact page #}
+            Please <a href="#">contact us</a> if you do not receive the verification email within a few minutes.
+        </p>
+        <a href="{% url 'pages:home' %}">Back to home</a>
+    </div>
+
+
+
+{% endblock %}
