@@ -29,9 +29,9 @@
             {% form_input form.password2 %}
             <div class="flex gap-2 items-start">
                 <input type="checkbox" id="terms-and-conditions">
-                {# TODO: add links to privacy policy and terms pages when finished #}
                 <label for="terms-and-conditions">
-                    I have read and agree to the <a href="#">privacy policy</a> and <a href="#">terms and conditions.</a>
+                    I have read and agree to the <a href="{% url 'pages:privacy' %}">privacy policy</a> and
+                    <a href="{% url 'pages:terms' %}">terms and conditions.</a>
                 </label>
             </div>
             {% if redirect_field_value %}

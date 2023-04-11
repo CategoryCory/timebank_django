@@ -76,9 +76,8 @@
             <img src="{% static 'images/sullivan-logo.png' %}" alt="Sullivan Logo" width="300" />
             <div class="flex gap-8">
                 <p class="text-white">&copy;2023 Sullivan Foundation</p>
-                {# TODO: replace with links to terms and privacy policy pages #}
-                <a href="#" class="text-white hover:text-orange-300 duration-150">Terms of Service</a>
-                <a href="#" class="text-white hover:text-orange-300 duration-150">Privacy Policy</a>
+                <a href="{% url 'pages:terms' %}" class="text-white hover:text-orange-300 duration-150">Terms of Service</a>
+                <a href="{% url 'pages:privacy' %}" class="text-white hover:text-orange-300 duration-150">Privacy Policy</a>
             </div>
         </div>
     </div>

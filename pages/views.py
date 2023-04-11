@@ -18,3 +18,11 @@ class HomepageView(TemplateView):
 
 class AboutView(TemplateView):
     template_name = 'pages/about.html'
+
+
+class TermsConditionsView(TemplateView):
+    template_name = 'pages/terms.html'
+
+
+class PrivacyPolicyView(TemplateView):
+    template_name = 'pages/privacy.html'
