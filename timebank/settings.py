@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'theme',
     'form_helpers.apps.FormHelpersConfig',
     'custom_user.apps.CustomUserConfig',
+    'contact.apps.ContactConfig',
     'jobs.apps.JobsConfig',
 ]
 
