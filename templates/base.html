@@ -31,6 +31,7 @@
                 <div class="hidden sm:ml-6 sm:flex sm:gap-8 sm:items-center">
                     {# TODO: make sure all navlinks are completed #}
                     {% url 'pages:about' as url_about %}
+                    {% url 'contacts:contact-us' as url_contact %}
                     <a
                         href="{% url 'pages:about' %}"
                         class="{% if request.path == url_about %}active-navlink{% else %}navlink{% endif %}"
@@ -38,6 +39,12 @@
                         About
                     </a>
                     <a href="#" class="navlink">Jobs</a>
+                    <a
+                        href="{% url 'contacts:contact-us' %}"
+                        class="{% if request.path == url_contact %}active-navlink{% else %}navlink{% endif %}"
+                    >
+                        Contact Us
+                    </a>
                     {% if user.is_authenticated %}
                         <div class="dropdown dropdown-end">
                             <label tabindex="0" class="btn btn-ghost btn-circle avatar">

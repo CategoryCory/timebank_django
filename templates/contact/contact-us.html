@@ -1,8 +1,28 @@
 {% extends 'base.html' %}
 
-{% load static %}
+{% load static form_field_tags %}
 
 {% block title %} | Contact Us{% endblock title %}
 
 {% block content %}
+    <div class="container mx-auto mt-12 flex items-center gap-12">
+        <div class="w-full pt-6 flex flex-col items-right text-right">
+            <h2 class="text-5xl">Got questions?</h2>
+            <h4 class="text-2xl">We'd love to help!</h4>
+            <p class="my-8">
+                Fill out the form on this page, and someone will reach out to you with a reply very soon!
+            </p>
+            <img src="{% static 'images/questions.jpg' %}">
+        </div>
+        <div class="w-full">
+            <form method="post" class="flex flex-col gap-4">
+                {% csrf_token %}
+                {% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
+                {% form_input form.contact_name %}
+                {% form_input form.contact_email %}
+                {% form_input form.contact_message %}
+                <button type="submit" class="btn btn-primary">Send your message</button>
+            </form>
+        </div>
+    </div>
 {% endblock content %}

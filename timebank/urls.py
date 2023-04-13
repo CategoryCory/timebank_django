@@ -6,6 +6,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('contact/', include('contact.urls')),
     path('', include('pages.urls')),
     path('__reload__/', include('django_browser_reload.urls')),
 ]
