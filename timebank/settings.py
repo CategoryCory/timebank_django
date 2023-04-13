@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'custom_user.apps.CustomUserConfig',
     'contact.apps.ContactConfig',
     'jobs.apps.JobsConfig',
+    'dashboard.apps.DashboardConfig',
 ]
 
 MIDDLEWARE = [

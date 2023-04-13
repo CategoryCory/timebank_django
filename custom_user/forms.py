@@ -110,3 +110,10 @@ class CustomAllauthResetPasswordKeyForm(ResetPasswordKeyForm, forms.Form):
                                                    widget=forms.PasswordInput(
                                                        attrs={'placeholder': 'Confirm your new password'}
                                                    ))
+
+
+class CustomUserProfileForm(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ('first_name', 'last_name', 'birthday', 'phone', 'street_address', 'street_address_2', 'city',
+                  'state', 'zip_code', 'biography', )
