@@ -86,4 +86,16 @@
     .faq-panel.faq-active .faq-content {
         @apply block;
     }
+
+    .alert-message {
+        @apply w-full my-4 px-5 py-3 flex gap-2 rounded-lg;
+    }
+
+    .alert-success {
+        @apply bg-emerald-400 text-emerald-950;
+    }
+
+    .alert-error {
+        @apply bg-red-400 text-red-950;
+    }
 }
