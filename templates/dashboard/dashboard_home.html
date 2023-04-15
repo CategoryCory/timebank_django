@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    {% include 'partials/_dashboard_banner.html' %}
+    {% if not user.is_approved %}
+        <div class="mt-16 flex flex-col flex-grow justify-between gap-12">
+            <div class="text-center">
+                <h2 class="mb-8 text-4xl">Your registration is pending approval.</h2>
+                <p class="mb-4 text-lg">It shouldn't take more than a couple of days.</p>
+                <p class='text-lg'>Meanwhile, please&nbsp;
+                    <a href="{% url 'dashboard:update-profile' %}" class="text-indigo-500 hover:text-indigo-700 hover:underline">
+                        complete your profile information.
+                    </a>
+                </p>
+            </div>
+            <img
+                    src="{% static 'images/person-at-desk.jpg' %}"
+                    alt="Person sitting at desk"
+                    class="mx-auto object-bottom bg-cover"
+            />
+        </div>
+    {% else %}
+        <h2>You are approved, dashboard will appear here</h2>
+    {% endif %}
+{% endblock content %}
