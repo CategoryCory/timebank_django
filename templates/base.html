@@ -47,11 +47,14 @@
                     </a>
                     {% if user.is_authenticated %}
                         <div class="dropdown dropdown-end">
-                            <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                                <div class="w-10 rounded-full">
-                                    <img src="{% static 'images/blank-user.png' %}" />
-                                </div>
-                            </label>
+                            <div class="flex items-center gap-2">
+                                <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                                    <div class="w-10 rounded-full">
+                                        <img src="{% static 'images/blank-user.png' %}" />
+                                    </div>
+                                </label>
+                                <p class="text-gray-500 font-bold">Hello, Bob!</p>
+                            </div>
                             <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
 {#                                <li>#}
 {#                                    <a class="justify-between">#}
@@ -60,6 +63,12 @@
 {#                                    </a>#}
 {#                                </li>#}
 {#                                <li><a>Settings</a></li>#}
+                                <li>
+                                    <a href="{% url 'dashboard:dashboard-home' %}">Dashboard</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'dashboard:update-profile' %}">Profile</a>
+                                </li>
                                 <li>
                                     <a href="{% url 'account_logout' %}">Logout</a>
                                 </li>
