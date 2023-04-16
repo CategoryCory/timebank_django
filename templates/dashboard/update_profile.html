@@ -1,7 +1,109 @@
 {% extends 'base.html' %}
 
-{% load static %}
+{% load static form_field_tags %}
 
 {% block content %}
-    <h2>This is the profile page.</h2>
+    <div class="py-8 bg-gray-100">
+        <div class="container mx-auto">
+            <h3>Profile</h3>
+        </div>
+    </div>
+    <div class="container mx-auto">
+        {% include 'partials/_alerts.html' %}
+        {% if not user.is_approved %}
+            <div class="mx-auto my-10">
+                <h2 class="mb-4 text-4xl text-gray-700">Hi, {{ user.first_name }}!</h2>
+                <h4 class="text-xl text-gray-500">Just one more step to finish your registration.</h4>
+                <div class="w-full my-14 p-8 flex flex-col items-center gap-4 border-2 border-orange-500 rounded-2xl
+                            lg:flex-row lg:justify-center lg:gap-24"
+                >
+                    <div class="">
+                        <div class="flex items-center gap-3">
+                        <span class="text-gray-500">
+                            <i class="fa-regular fa-lightbulb fa-4x"></i>
+                        </span>
+                            <h4 class="text-xl text-gray-500">Tips for creating a strong profile</h4>
+                        </div>
+                    </div>
+                    <ul class="list-disc grow-[2] space-y-3">
+                        <li class="text-gray-700">
+                            Make sure to use a profile picture that shows your whole face and does not include other people.
+                        </li>
+                        <li class="text-gray-700">
+                            Only list the skills that you know you can provide.
+                        </li>
+                        <li class="text-gray-700">
+                            Add a short, clean additional description if you need.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
+        <form method="post" class="">
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
+            <div class="w-full mb-6 pb-6 flex flex-row border-b-2 border-gray-300">
+                <div class="pr-6 flex-none basis-1/4 text-gray-500">
+                    <h4 class="">
+                        Personal Information
+                    </h4>
+                    <p class="">
+                        Please complete all fields in the personal information section.
+                    </p>
+                </div>
+                <div class="space-y-6 basis-3/4 flex-none">
+                    <div class="grid grid-cols-2 gap-8">
+                        {% form_input form.first_name %}
+                        {% form_input form.last_name %}
+                    </div>
+                    <div class="grid grid-cols-2 gap-8">
+                        {% form_input form.birthday %}
+                        {% form_input form.phone %}
+                    </div>
+                    <div class="grid grid-cols-2 gap-8">
+                        {% form_input form.street_address %}
+                        {% form_input form.street_address_2 %}
+                    </div>
+                    <div class="grid grid-cols-3 gap-8">
+                        {% form_input form.city %}
+                        {% form_input form.state %}
+                        {% form_input form.zip_code %}
+                    </div>
+                    <div class="grid grid-cols-2">
+                        {% form_input form.biography %}
+                    </div>
+                </div>
+            </div>
+            <div class="w-full mb-6 pb-6 flex flex-row border-b-2 border-gray-300">
+                <div class="pr-6 flex-none basis-1/4 text-gray-500">
+                    <h4 class="">
+                        Social Media Accounts
+                    </h4>
+                    <p class="">
+                        Feel free to enter links to any of your social media accounts you'd like to share.
+                    </p>
+                </div>
+                <div class="space-y-6 basis-3/4 flex-none">
+                    <div class="grid grid-cols-2 gap-8">
+                        {% form_input form.facebook %}
+                        {% form_input form.twitter %}
+                    </div>
+                    <div class="grid grid-cols-2 gap-8">
+                        {% form_input form.instagram %}
+                        {% form_input form.linkedin %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-8 flex justify-end items-center gap-4">
+                <a
+                    href="{% url 'dashboard:dashboard-home' %}"
+                    class="text-gray-500 font-normal hover:underline"
+                >
+                    <i class="fa-solid fa-arrow-left mr-3"></i>Cancel and return to dashboard
+                </a>
+                <button type="submit" class="btn btn-primary">Update Profile</button>
+            </div>
+        </form>
+    </div>
 {% endblock content %}

@@ -116,4 +116,8 @@ class CustomUserProfileForm(forms.ModelForm):
     class Meta:
         model = CustomUser
         fields = ('first_name', 'last_name', 'birthday', 'phone', 'street_address', 'street_address_2', 'city',
-                  'state', 'zip_code', 'biography', )
+                  'state', 'zip_code', 'biography', 'facebook', 'twitter', 'instagram', 'linkedin', )
+        widgets = {
+            'birthday': forms.TextInput(attrs={'type': 'date', }),
+            'biography': forms.Textarea(attrs={'rows': 5, })
+        }
