@@ -1,9 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'dashboard_base.html' %}
 
 {% load static %}
 
-{% block content %}
-    {% include 'partials/_dashboard_banner.html' %}
+{% block title %} | Dashboard Home{% endblock title %}
+
+{% block dash_content %}
+{#    {% include 'partials/_dashboard_banner.html' %}#}
     {% if not user.is_approved %}
         <div class="mt-16 flex flex-col flex-grow justify-between gap-12">
             <div class="text-center">
@@ -22,6 +24,7 @@
             />
         </div>
     {% else %}
-        <h2>You are approved, dashboard will appear here</h2>
+        <h2>Welcome to your dashboard!</h2>
+        <p>Here you will find your jobs, applications, and messages. Use the menu to the left to navigate!</p>
     {% endif %}
-{% endblock content %}
+{% endblock dash_content %}

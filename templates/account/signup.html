@@ -30,8 +30,8 @@
             <div class="flex gap-2 items-start">
                 <input type="checkbox" id="terms-and-conditions">
                 <label for="terms-and-conditions">
-                    I have read and agree to the <a href="{% url 'pages:privacy' %}">privacy policy</a> and
-                    <a href="{% url 'pages:terms' %}">terms and conditions.</a>
+                    I have read and agree to the <a href="{% url 'pages:privacy' %}" target="_blank">privacy policy</a> and
+                    <a href="{% url 'pages:terms' %}" target="_blank">terms and conditions.</a>
                 </label>
             </div>
             {% if redirect_field_value %}

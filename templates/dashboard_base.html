@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% include 'partials/_dashboard_banner.html' %}
+    <div class="container mx-auto">
+        {% include 'partials/_alerts.html' %}
+    </div>
+    <div class="container mx-auto mt-8 flex gap-16">
+        {% include 'partials/_dashboard_nav.html' %}
+        <section>
+            {% block dash_content %}{% endblock dash_content %}
+        </section>
+    </div>
+{% endblock content %}
