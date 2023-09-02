@@ -28,6 +28,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # Core
+    'jazzmin',  # Technically 3rd party but must be before django.contrib.admin
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,11 +41,13 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'tinymce',
     'tailwind',
     'django_browser_reload',
 
     # Local
     'theme',
+    'pages.apps.PagesConfig',
     'form_helpers.apps.FormHelpersConfig',
     'custom_user.apps.CustomUserConfig',
     'contact.apps.ContactConfig',
@@ -193,3 +196,14 @@ ACCOUNT_USER_DISPLAY = 'timebank.helpers.helpers.get_user_full_name'
 SOCIALACCOUNT_PROVIDERS = {}
 LOGIN_REDIRECT_URL = 'pages:login_success'
 ACCOUNT_LOGOUT_REDIRECT_URL = 'pages:home'
+
+TINYMCE_DEFAULT_CONFIG = {
+    "height": "450px",
+    "menubar": "file edit view insert format tools table help",
+    "plugins": "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code "
+    "fullscreen insertdatetime media table paste code help wordcount spellchecker",
+    "toolbar": "undo redo | bold italic underline | fontsizeselect formatselect | alignleft "
+    "aligncenter alignright alignjustify | outdent indent | numlist bullist | forecolor "
+    "backcolor | link anchor codesample | "
+    "a11ycheck ltr rtl | showcomments addcomment code",
+}

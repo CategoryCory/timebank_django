@@ -89,11 +89,7 @@
     }
 
     .faq-content {
-        @apply max-w-[72rem] px-4 hidden;
-    }
-
-    .faq-panel.faq-active .faq-content {
-        @apply block;
+        @apply max-w-[72rem] px-8;
     }
 
     .alert-message {
