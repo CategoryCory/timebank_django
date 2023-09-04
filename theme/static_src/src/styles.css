@@ -52,6 +52,14 @@
         @apply px-5 py-3 font-bold rounded text-indigo-800 bg-indigo-200;
     }
 
+    .dropdown ul.dropdown-content li a {
+        @apply text-gray-500;
+    }
+
+    .dropdown ul.dropdown-content li a:hover {
+        @apply text-indigo-800 bg-indigo-100;
+    }
+
     input[type="text"],
     input[type="email"],
     input[type="password"],
@@ -93,14 +101,18 @@
     }
 
     .alert-message {
-        @apply w-full my-4 px-5 py-3 flex gap-2 rounded-lg;
+        @apply w-full my-4 px-5 py-3 flex gap-2 rounded-lg shadow-lg opacity-80;
     }
 
     .alert-success {
-        @apply bg-emerald-400 text-emerald-950;
+        @apply bg-emerald-300 text-emerald-950;
+    }
+
+    .alert-info {
+        @apply bg-sky-300 text-sky-950;
     }
 
     .alert-error {
-        @apply bg-red-400 text-red-950;
+        @apply bg-red-300 text-red-950;
     }
 }

@@ -56,10 +56,12 @@ class CustomAllauthSignupForm(SignupForm, forms.Form):
                                                        attrs={'placeholder': 'Enter your password again'}
                                                    ))
 
-        def save(self, request):
-            user = super(CustomAllauthSignupForm, self).save(request)
-            user.save()
-            return user
+    def save(self, request):
+        user = super(CustomAllauthSignupForm, self).save(request)
+        user_initials = user.first_name[:1] + user.last_name[:1]
+        user.profile_image_url = f'https://ui-avatars.com/api/?name={user_initials}&color=4338CA&background=C7D2FE'
+        user.save()
+        return user
 
 
 class CustomAllauthSetPasswordForm(SetPasswordForm, forms.Form):

@@ -12,6 +12,7 @@ class CustomUser(AbstractUser):
     phone = models.CharField(max_length=25)
     birthday = models.DateField(default=timezone.now)
     biography = models.TextField()
+    profile_image_url = models.URLField(blank=True)
     facebook = models.CharField(max_length=250, blank=True)
     twitter = models.CharField(max_length=250, blank=True)
     instagram = models.CharField(max_length=250, blank=True)

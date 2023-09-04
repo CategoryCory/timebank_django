@@ -17,8 +17,8 @@ class CustomUserAdmin(UserAdmin):
         ('Account Information', {'fields': ('username', 'email', 'first_name', 'last_name', 'is_approved', )}),
         ('Contact Information', {'fields': ('street_address', 'street_address_2', 'city', 'state', 'zip_code',
                                             'phone', )}),
-        ('Personal and Social Information', {'fields': ('birthday', 'biography', 'facebook', 'twitter', 'instagram',
-                                                        'linkedin', )}),
+        ('Personal and Social Information', {'fields': ('birthday', 'biography', 'profile_image_url', 'facebook',
+                                                        'twitter', 'instagram', 'linkedin', )}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions', )}),
         ('Account Login Information', {'fields': ('last_login', 'date_joined', )}),
     )
