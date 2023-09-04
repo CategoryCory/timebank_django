@@ -60,7 +60,6 @@ def update_profile_image(request):
         form = UploadProfileImageForm(request.POST, request.FILES)
         if form.is_valid():
             img = form.cleaned_data.get('profile_image')
-            # TODO: Check if profile photo exists and update if so
             if hasattr(request.user, 'profile_image'):
                 current_photo = request.user.profile_image
                 current_photo.profile_image = img
