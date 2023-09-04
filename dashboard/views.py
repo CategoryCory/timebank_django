@@ -8,8 +8,9 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, TemplateView
 
-from custom_user.forms import CustomUserProfileForm
+from custom_user.forms import CustomUserProfileForm, UploadProfileImageForm
 from jobs.models import Job
+from custom_user.models import CustomUserProfileImage
 
 CustomUser = get_user_model()
 
@@ -51,3 +52,26 @@ def update_profile_view(request):
         form = CustomUserProfileForm(instance=request.user)
 
     return render(request, 'dashboard/update_profile.html', {'form': form})
+
+
+@login_required
+def update_profile_image(request):
+    if request.method == 'POST':
+        form = UploadProfileImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            img = form.cleaned_data.get('profile_image')
+            # TODO: Check if profile photo exists and update if so
+            if hasattr(request.user, 'profile_image'):
+                current_photo = request.user.profile_image
+                current_photo.profile_image = img
+                current_photo.save()
+            else:
+                profile_photo = CustomUserProfileImage.objects.create(
+                    user=request.user,
+                    profile_image=img,
+                )
+                profile_photo.save()
+            return redirect(reverse_lazy('dashboard:update-profile-image'))
+    else:
+        form = UploadProfileImageForm()
+    return render(request, 'dashboard/update_profile_image.html', {'form': form})

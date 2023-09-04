@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="py-8 bg-gray-100">
+        <div class="container mx-auto">
+            <h3>Manage Your Profile</h3>
+        </div>
+    </div>
+    <div class="container mx-auto">
+        {% include 'partials/_alerts.html' %}
+        {% if not user.is_approved %}
+            <div class="mx-auto mt-10">
+                <h2 class="mb-4 text-4xl text-gray-700">Hi, {{ user.first_name }}!</h2>
+                <h4 class="text-xl text-gray-500">Just one more step to finish your registration.</h4>
+                <div class="w-full my-14 p-8 flex flex-col items-center gap-4 border-2 border-orange-500 rounded-2xl
+                            lg:flex-row lg:justify-center lg:gap-24"
+                >
+                    <div class="">
+                        <div class="flex items-center gap-3">
+                        <span class="text-gray-500">
+                            <i class="fa-regular fa-lightbulb fa-4x"></i>
+                        </span>
+                            <h4 class="text-xl text-gray-500">Tips for creating a strong profile</h4>
+                        </div>
+                    </div>
+                    <ul class="list-disc grow-[2] space-y-3">
+                        <li class="text-gray-700">
+                            Make sure to use a profile picture that shows your whole face and does not include other people.
+                        </li>
+                        <li class="text-gray-700">
+                            Only list the skills that you know you can provide.
+                        </li>
+                        <li class="text-gray-700">
+                            Add a short, clean additional description if you need.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
+        <div class="w-full mb-6 pb-6 flex flex-row">
+            <div class="pt-6 pr-10 flex-none basis-1/4">
+                <div>
+                    {% include 'partials/_manage_profile_nav.html' %}
+                </div>
+            </div>
+            <div class="basis-3/4 flex-none">
+                {% block profile_content %}{% endblock profile_content %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

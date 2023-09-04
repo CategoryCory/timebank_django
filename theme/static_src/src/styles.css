@@ -72,6 +72,10 @@
         @apply w-5 h-5 rounded text-indigo-600 border-slate-400 border-2 focus:ring-indigo-600;
     }
 
+    input[type="file"] {
+        @apply file-input file-input-sm file-input-primary border-opacity-80 border-2 w-full max-w-lg;
+    }
+
     .tabs-container {
         @apply container max-w-[58rem] mx-auto mb-10 flex border-b-2 border-blue-800/20;
     }

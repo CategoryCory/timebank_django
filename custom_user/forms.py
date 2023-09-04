@@ -10,7 +10,7 @@ from allauth.account.forms import (
     ResetPasswordKeyForm
 )
 
-from .models import CustomUser
+from .models import CustomUser, CustomUserProfileImage
 
 # TODO: Add custom field validation error messages
 
@@ -58,8 +58,8 @@ class CustomAllauthSignupForm(SignupForm, forms.Form):
 
     def save(self, request):
         user = super(CustomAllauthSignupForm, self).save(request)
-        user_initials = user.first_name[:1] + user.last_name[:1]
-        user.profile_image_url = f'https://ui-avatars.com/api/?name={user_initials}&color=4338CA&background=C7D2FE'
+        # user_initials = user.first_name[:1] + user.last_name[:1]
+        # user.profile_image_url = f'https://ui-avatars.com/api/?name={user_initials}&color=4338CA&background=C7D2FE'
         user.save()
         return user
 
@@ -123,3 +123,9 @@ class CustomUserProfileForm(forms.ModelForm):
             'birthday': forms.TextInput(attrs={'type': 'date', }),
             'biography': forms.Textarea(attrs={'rows': 5, })
         }
+
+
+class UploadProfileImageForm(forms.ModelForm):
+    class Meta:
+        model = CustomUserProfileImage
+        fields = ('profile_image', )

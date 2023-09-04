@@ -1,0 +1,64 @@
+{% extends 'manage_profile_base.html' %}
+
+{% block title %} | Manage Profile{% endblock title %}
+
+{% block profile_content %}
+    <form method="post" enctype="multipart/form-data" class="mt-10 space-y-6">
+        {% csrf_token %}
+        <div class="pb-6 text-gray-500 border-b-2 border-gray-300">
+            <h4 class="">
+                Manage Profile Image
+            </h4>
+            <p>Upload a profile image or change your existing profile image.</p>
+        </div>
+        {% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
+        <div class="grid grid-cols-2 gap-8">
+            <div class="flex flex-col space-y-4 col-span-2">
+                <label for="{{ form.profile_image.id_for_label }}" class="text-gray-500">
+                    Click the button below to upload or change your profile image.
+                </label>
+                <div class="avatar">
+                    <div class="w-24 rounded-full">
+                        <img id="imagePreview" src="{{ user.current_profile_image }}" />
+                    </div>
+                </div>
+                {{ form.profile_image }}
+                {% if form.profile_image.errors %}
+                    {% for error in form.profile_image.errors %}
+                        <div class="px-3 py-2 flex gap-2 bg-red-400 text-red-950 rounded">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="stroke-current flex-shrink-0 h-6 w-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                ></path>
+                            </svg>
+                            <span>{{ error }}</span>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% if form.profile_image.help_text %}
+                    <p class="text-sm text-gray-500">{{ form.profile_image.help_text|safe }}</p>
+                {% endif %}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Profile Image</button>
+    </form>
+    <script>
+        const imageUploadField = document.getElementById("{{ form.profile_image.auto_id }}");
+        const imagePreview = document.getElementById("imagePreview");
+
+        imageUploadField.addEventListener("change", e => {
+            const files = e.target.files;
+            if (files.length > 0) {
+                imagePreview.src = URL.createObjectURL(files[0]);
+            }
+        });
+    </script>
+{% endblock profile_content %}
