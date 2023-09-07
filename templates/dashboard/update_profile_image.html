@@ -50,6 +50,9 @@
         </div>
         <button type="submit" class="btn btn-primary">Update Profile Image</button>
     </form>
+{% endblock profile_content %}
+
+{% block extra_body %}
     <script>
         const imageUploadField = document.getElementById("{{ form.profile_image.auto_id }}");
         const imagePreview = document.getElementById("imagePreview");
@@ -61,4 +64,4 @@
             }
         });
     </script>
-{% endblock profile_content %}
+{% endblock extra_body %}

@@ -76,6 +76,10 @@
         @apply file-input file-input-sm file-input-primary border-opacity-80 border-2 w-full max-w-lg;
     }
 
+    input[type="radio"] {
+        @apply h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600;
+    }
+
     .tabs-container {
         @apply container max-w-[58rem] mx-auto mb-10 flex border-b-2 border-blue-800/20;
     }
