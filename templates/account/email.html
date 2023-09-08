@@ -132,26 +132,20 @@
 
 {% block extra_body %}
     <script type="text/javascript">
-        (function() {
-            // const message = "Do you really want to remove the selected email address?";
-            const emailListForm = document.getElementById("emailListForm");
-            const actions = document.getElementsByName('action_remove');
-            const confirmDeleteModal = document.getElementById("confirmDeleteModal");
-            const confirmDeleteButton = document.getElementById("confirmDeleteButton");
+        const emailListForm = document.getElementById("emailListForm");
+        const actions = document.getElementsByName('action_remove');
+        const confirmDeleteModal = document.getElementById("confirmDeleteModal");
+        const confirmDeleteButton = document.getElementById("confirmDeleteButton");
 
-            if (actions.length) {
-                actions[0].addEventListener("click", function(e) {
-                    confirmDeleteModal.showModal();
-                    e.preventDefault();
-                    // if (! confirm(message)) {
-                    //      e.preventDefault();
-                    // }
-                });
+        if (actions.length) {
+            actions[0].addEventListener("click", function(e) {
+                confirmDeleteModal.showModal();
+                e.preventDefault();
+            });
 
-                confirmDeleteButton.addEventListener("click", () => {
-                    emailListForm.requestSubmit(actions[0]);
-                });
-            }
-        })();
+            confirmDeleteButton.addEventListener("click", () => {
+                emailListForm.requestSubmit(actions[0]);
+            });
+        }
     </script>
 {% endblock %}
