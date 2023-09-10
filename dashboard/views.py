@@ -6,9 +6,9 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, TemplateView
+from django.views.generic import ListView, TemplateView, UpdateView
 
-from custom_user.forms import CustomUserProfileForm, UploadProfileImageForm
+from custom_user.forms import CustomUserProfileForm, UploadProfileImageForm, CustomAllauthChangePasswordForm
 from jobs.models import Job
 from custom_user.models import CustomUserProfileImage
 
@@ -39,19 +39,15 @@ class DashboardPostedJobsView(LoginRequiredMixin, ListView):
         return Job.objects.filter(created_by=self.request.user).order_by('-created_on')
 
 
-@login_required
-def update_profile_view(request):
-    if request.method == 'POST':
-        form = CustomUserProfileForm(request.POST, instance=request.user)
+class UpdateProfileView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    template_name = 'dashboard/update_profile.html'
+    model = CustomUser
+    form_class = CustomUserProfileForm
+    success_url = reverse_lazy('dashboard:update-profile')
+    success_message = 'Your profile has been successfully updated.'
 
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your profile has been successfully updated.')
-            return redirect(reverse_lazy('dashboard:update-profile'))
-    else:
-        form = CustomUserProfileForm(instance=request.user)
-
-    return render(request, 'dashboard/update_profile.html', {'form': form})
+    def get_object(self, queryset=None):
+        return self.request.user
 
 
 @login_required
