@@ -13,7 +13,7 @@ class JobCategory(models.Model):
         verbose_name = 'Job Category'
         verbose_name_plural = 'Job Categories'
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.category_name
 
 
@@ -54,7 +54,7 @@ class Job(models.Model):
     created_by = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)
     job_category = models.ForeignKey(JobCategory, on_delete=models.SET_NULL, null=True, blank=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.job_name
 
     # TODO: Add get_absolute_url
@@ -98,5 +98,5 @@ class JobSchedule(models.Model):
                                            help_text='The current status of this time slot')
     job = models.ForeignKey(Job, on_delete=models.SET_NULL, null=True, blank=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'{self.day_of_week}, {self.time_begin} - {self.time_end}'

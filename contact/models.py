@@ -7,5 +7,5 @@ class Contact(models.Model):
     contact_message = models.TextField()
     contact_timestamp = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'{self.contact_name} - {self.contact_timestamp}'

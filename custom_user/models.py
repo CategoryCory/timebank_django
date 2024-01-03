@@ -33,7 +33,7 @@ class CustomUser(AbstractUser):
         else:
             return self.profile_image.profile_image.url
 
-    def __str__(self):
+    def __str__(self) -> str:
         if self.first_name and self.last_name:
             return f'{self.first_name} {self.last_name}'
         else:

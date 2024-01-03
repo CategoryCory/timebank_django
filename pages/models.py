@@ -14,5 +14,5 @@ class FAQEntry(models.Model):
         verbose_name = 'FAQ Entry'
         verbose_name_plural = 'FAQ Entries'
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.title
