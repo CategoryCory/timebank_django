@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 
 env = environ.Env(
-    DEBUG=(bool, False)
+    DEBUG=(bool, False),
 )
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -12,13 +12,12 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 SECRET_KEY = env('SECRET_KEY')
 
-DEBUG = env('DEBUG')
+DEBUG = bool(env('DEBUG'))
 
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # Core
-    'jazzmin',  # Technically 3rd party but must be before django.contrib.admin
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,6 +44,9 @@ INSTALLED_APPS = [
     'dashboard.apps.DashboardConfig',
 ]
 
+# if DEBUG is True:
+#     INSTALLED_APPS += ['django_browser_reload', ]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -56,6 +58,9 @@ MIDDLEWARE = [
     'django_browser_reload.middleware.BrowserReloadMiddleware',
     'allauth.account.middleware.AccountMiddleware',
 ]
+
+# if DEBUG is True:
+#     MIDDLEWARE += ['django_browser_reload.middleware.BrowserReloadMiddleware', ]
 
 ROOT_URLCONF = 'timebank.urls'
 
